@@ -31,7 +31,7 @@ cargo install crispr_screen
 To run our analysis we just use the following command:
 
 ```bash
-crispr_screen \
+crispr_screen test \
   -i mapping.tab \
   -c sample_low_1 sample_low_2 \
   -t sample_high_1 sample_high_2
