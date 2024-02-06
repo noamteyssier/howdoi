@@ -1,0 +1,287 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Metadata - How Do I...?</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../intro.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../crispr_screen/intro.html"><strong aria-hidden="true">1.</strong> CRISPR Screening</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../crispr_screen/abundance.html"><strong aria-hidden="true">1.1.</strong> Counting sgRNA abundance</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../crispr_screen/reference.html"><strong aria-hidden="true">1.1.1.</strong> Reference Library</a></li><li class="chapter-item expanded "><a href="../crispr_screen/counting.html"><strong aria-hidden="true">1.1.2.</strong> Guide Counting</a></li></ol></li><li class="chapter-item expanded "><a href="../crispr_screen/expression.html"><strong aria-hidden="true">1.2.</strong> Differential Expression</a></li><li class="chapter-item expanded "><a href="../crispr_screen/visualization.html"><strong aria-hidden="true">1.3.</strong> Visualization</a></li></ol></li><li class="chapter-item expanded "><a href="../cropseq/intro.html"><strong aria-hidden="true">2.</strong> CROP-Seq</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cropseq/installation.html"><strong aria-hidden="true">2.1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="../cropseq/environment.html"><strong aria-hidden="true">2.2.</strong> Environment</a></li><li class="chapter-item expanded "><a href="../cropseq/lazy.html"><strong aria-hidden="true">2.3.</strong> Background Processing</a></li><li class="chapter-item expanded "><a href="../cropseq/processing.html"><strong aria-hidden="true">2.4.</strong> Sequence Processing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cropseq/directory.html"><strong aria-hidden="true">2.4.1.</strong> Directory Management</a></li><li class="chapter-item expanded "><a href="../cropseq/metadata.html" class="active"><strong aria-hidden="true">2.4.2.</strong> Metadata</a></li><li class="chapter-item expanded "><a href="../cropseq/10x_alignment.html"><strong aria-hidden="true">2.4.3.</strong> 10X Alignment</a></li><li class="chapter-item expanded "><a href="../cropseq/pcr_alignment.html"><strong aria-hidden="true">2.4.4.</strong> PCR Alignment</a></li><li class="chapter-item expanded "><a href="../cropseq/assignment.html"><strong aria-hidden="true">2.4.5.</strong> Assignment</a></li><li class="spacer"></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">How Do I...?</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="metadata"><a class="header" href="#metadata">Metadata</a></h1>
+<h2 id="whitelist"><a class="header" href="#whitelist">Whitelist</a></h2>
+<p>The <a href="https://kb.10xgenomics.com/hc/en-us/articles/115004506263-What-is-a-barcode-whitelist">whitelist</a>
+is a set of cell barcodes you expect your reads to come from.
+This is usually specified by the technology and can be found online.</p>
+<p>Here you can find the <a href="https://github.com/noamteyssier/10x_whitelist_mirror/blob/0055bd325b5115731b34c7d7e75d422704489ba8/3M-february-2018.txt.gz">10Xv3 cell barcodes</a>
+in my github mirror.
+But you can also find them in your installation of CellRanger or kallisto.</p>
+<blockquote>
+<p><strong>Note</strong>:</p>
+<p>You will use the same whitelist for both the 10X sequences and the PCR
+sequences as they come from the same set of cells.
+This step is not required if you are aligning with kallisto because it can
+provide you with the same whitelist.
+But it will save space to just provide this file as otherwise it will write
+to disk the same whitelist <em>for each sample you process</em></p>
+</blockquote>
+<pre><code class="language-bash"># Download the 10X v3 Whitelist from my github mirror
+wget \
+  https://github.com/noamteyssier/10x_whitelist_mirror/raw/main/3M-february-2018.txt.gz \
+  project_name/meta/whitelist/3M-february-2018.txt.gz
+</code></pre>
+<h2 id="kallisto-index"><a class="header" href="#kallisto-index">Kallisto Index</a></h2>
+<p>The index is a kmer de-bruijn graph representation of the transcriptomic sequences
+you will be aligning your 10X sequences to.</p>
+<blockquote>
+<p><strong>Note</strong>:</p>
+<p>If you are interested in learning more about the kallisto index I
+highly recommend reading the kallisto paper which describes the
+pseudo-alignment algorithm and the index. {{#cite bray_near-optimal_2016}}</p>
+</blockquote>
+<p>If you are interested in building your own reference index please check out
+the <a href="https://www.kallistobus.tools/tutorials/kb_custom_index/python/kb_transcriptome_index/">kb tutorial</a></p>
+<p>For the purposes of this tutorial we will be using a <a href="https://www.kallistobus.tools/tutorials/kb_velocity/python/kb_velocity/#download-a-pre-built-human-rna-velocity-index">prebuilt index</a>
+generated for RNA velocity analyses.</p>
+<p>We will also be building our own index in an upcoming section so you can look
+at how to do that there as well.</p>
+<h2 id="rna-velocity-transcriptome"><a class="header" href="#rna-velocity-transcriptome">RNA Velocity Transcriptome</a></h2>
+<blockquote>
+<p>Even if you are not interested in doing an RNA velocity analysis - it doesn't
+hurt you to align to a spliced/unspliced reference.</p>
+<p>The counts are aggregated between the spliced/unspliced records in the
+downstream data, but you have an added option of observing the splice/unsplice
+ratio</p>
+</blockquote>
+<pre><code class="language-bash"># moving to the planned directory
+cd project_name/meta/index/
+
+# Downloading the Reference Index
+kb ref \
+  -d linnarsson \
+  -i index.idx \
+  -g t2g.txt \
+  -c1 spliced_t2c.txt \
+  -c2 unspliced_t2c.txt
+</code></pre>
+<p>The above command will download the reference index and create the following files:</p>
+<ol>
+<li><code>project_name/meta/10X_index/index.idx</code></li>
+<li><code>project_name/meta/10X_index/t2g.txt</code></li>
+<li><code>project_name/meta/10X_index/spliced_t2c.txt</code></li>
+<li><code>project_name/meta/10X_index/unspliced_t2c.txt</code></li>
+</ol>
+<p>These will be used in the next section when we run our 10X alignment.</p>
+<h2 id="target-sequences"><a class="header" href="#target-sequences">Target Sequences</a></h2>
+<p>The <code>cropseq.fa</code> file here is a stand-in for the fasta formatted sequences of
+your expected guide sequences.</p>
+<p>You will want to place this under <code>project_name/meta/pcr_index/</code></p>
+<h3 id="filename-cropseqfa"><a class="header" href="#filename-cropseqfa">Filename: <code>cropseq.fa</code></a></h3>
+<pre><code class="language-txt">&gt;rs17057051_i1
+TTGTCCAGCATTCTGCTTCAATGGTTTAAGAGC
+&gt;rs17057051_i2
+TTGGTCTCCATTGAAGATGTGTTGTTTAAGAGC
+              ...
+&gt;rs1532277_i1
+TTGCAGAACTCTAGCAAGACGTGGTTTAAGAGC
+&gt;rs1532277_i2
+TTGGAATCTGGGCATTAGGCCCTGTTTAAGAGC
+</code></pre>
+<h2 id="final-directory-structure"><a class="header" href="#final-directory-structure">Final Directory Structure</a></h2>
+<p>I <strong>highly</strong> recommend you have a directory structure like the following
+for your project.</p>
+<blockquote>
+<p>Downstream code will be expecting this directory structure but if you feel
+strongly about your own structure then it can be easily modified for your own interests.</p>
+</blockquote>
+<pre><code class="language-txt">project_name/
+└── meta/
+    └── whitelist/
+        └── 3M-february-2018.txt.gz
+    └── 10X_index/
+        ├── index.idx 
+        ├── t2g.txt
+        ├── spliced_t2c.txt
+        └── unspliced_t2c.txt
+    └── pcr_index/
+        └── cropseq.fa
+└── sequence/
+    └── 10X/
+        ├── sampleX_R1.fastq.gz
+        ├── sampleX_R2.fastq.gz
+        :        ...
+        ├── sampleY_R1.fastq.gz
+        └── sampleY_R2.fastq.gz
+    └── pcr/
+        ├── sampleX_R1.fastq.gz
+        ├── sampleX_R2.fastq.gz
+        :        ...
+        ├── sampleY_R1.fastq.gz
+        └── sampleY_R2.fastq.gz
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../cropseq/directory.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../cropseq/10x_alignment.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../cropseq/directory.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../cropseq/10x_alignment.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

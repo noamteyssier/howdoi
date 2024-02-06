@@ -1,0 +1,1087 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>How Do I...?</title>
+        <meta name="robots" content="noindex" />
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="intro.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="crispr_screen/intro.html"><strong aria-hidden="true">1.</strong> CRISPR Screening</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="crispr_screen/abundance.html"><strong aria-hidden="true">1.1.</strong> Counting sgRNA abundance</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="crispr_screen/reference.html"><strong aria-hidden="true">1.1.1.</strong> Reference Library</a></li><li class="chapter-item expanded "><a href="crispr_screen/counting.html"><strong aria-hidden="true">1.1.2.</strong> Guide Counting</a></li></ol></li><li class="chapter-item expanded "><a href="crispr_screen/expression.html"><strong aria-hidden="true">1.2.</strong> Differential Expression</a></li><li class="chapter-item expanded "><a href="crispr_screen/visualization.html"><strong aria-hidden="true">1.3.</strong> Visualization</a></li></ol></li><li class="chapter-item expanded "><a href="cropseq/intro.html"><strong aria-hidden="true">2.</strong> CROP-Seq</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cropseq/installation.html"><strong aria-hidden="true">2.1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="cropseq/environment.html"><strong aria-hidden="true">2.2.</strong> Environment</a></li><li class="chapter-item expanded "><a href="cropseq/lazy.html"><strong aria-hidden="true">2.3.</strong> Background Processing</a></li><li class="chapter-item expanded "><a href="cropseq/processing.html"><strong aria-hidden="true">2.4.</strong> Sequence Processing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cropseq/directory.html"><strong aria-hidden="true">2.4.1.</strong> Directory Management</a></li><li class="chapter-item expanded "><a href="cropseq/metadata.html"><strong aria-hidden="true">2.4.2.</strong> Metadata</a></li><li class="chapter-item expanded "><a href="cropseq/10x_alignment.html"><strong aria-hidden="true">2.4.3.</strong> 10X Alignment</a></li><li class="chapter-item expanded "><a href="cropseq/pcr_alignment.html"><strong aria-hidden="true">2.4.4.</strong> PCR Alignment</a></li><li class="chapter-item expanded "><a href="cropseq/assignment.html"><strong aria-hidden="true">2.4.5.</strong> Assignment</a></li><li class="spacer"></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">How Do I...?</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="-how-do-i---"><a class="header" href="#-how-do-i---">[ <code>How Do I ... ?</code> ]</a></h1>
+<p>Hello!</p>
+<p>This is a growing collection of tutorials focused around bioinformatics, analysis,
+and programming in the life sciences.</p>
+<p>Take a look at the sidebar for the topics.</p>
+<p>If there are things you don't know how to do and want help feel free to reach out
+and I can write more tutorials or clear up confusing information.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="crispr-screening"><a class="header" href="#crispr-screening">CRISPR Screening</a></h1>
+<p>So you just ran a CRISPR screen and got your sequencing files back - what next?</p>
+<p>The analysis follows a few steps:</p>
+<ol>
+<li>Mapping your sequencing reads to your reference library</li>
+<li>Differential expression of guide RNA abundances</li>
+<li>Aggregation of guide differential expression into differential expression of genes</li>
+<li>Vizualization and interpretation</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="counting-sgrna-abundance"><a class="header" href="#counting-sgrna-abundance">Counting sgRNA abundance</a></h1>
+<h2 id="tools-needed"><a class="header" href="#tools-needed">Tools Needed</a></h2>
+<p>For this step of the analysis we'll need two different tools:</p>
+<ol>
+<li><a href="https://github.com/noamteyssier/fxtools">fxtools</a></li>
+<li><a href="https://github.com/noamteyssier/sgcount">sgcount</a></li>
+</ol>
+<p>Each of these tools has their own documentation
+(<a href="https://github.com/noamteyssier/fxtools">fxtools</a> and
+<a href="https://noamteyssier.github.io/sgcount/">sgcount</a>)
+for more detailed usage - but I will describe everything you need
+for your analysis here.</p>
+<h3 id="installation"><a class="header" href="#installation">Installation</a></h3>
+<p>If you've never used any rust tools before - you will need to install <code>cargo</code>
+the rust package manager.</p>
+<pre><code class="language-bash"># installs `cargo`
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+</code></pre>
+<p>Then we can install these tools easily with <code>cargo</code></p>
+<pre><code class="language-bash">cargo install fxtools
+cargo install sgcount
+</code></pre>
+<p>You can validate that they installed with the following:</p>
+<pre><code class="language-bash">fxtools --version
+sgcount --version
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="reference-library"><a class="header" href="#reference-library">Reference Library</a></h1>
+<h2 id="reference-library-format"><a class="header" href="#reference-library-format">Reference library format</a></h2>
+<p>You will need to identify what your reference library is.
+In most cases this is a either a <code>csv</code> or a <code>fasta</code> file of sgrna names and sequences.</p>
+<p>The input we expect should be a <code>fasta</code> file of the sgrna library.
+Here is an example of what that looks like:</p>
+<pre><code class="language-text">&gt;lib.0
+ATAGCCCGGCGGTCTGCTGG
+&gt;lib.1
+TAAGGCACTATAGCAATGAG
+&gt;lib.2
+GTAGATAAAACGTGTGGCCC
+&gt;lib.3
+AAGGCGACCATCTACCCTTG
+</code></pre>
+<h2 id="processing-reference-library"><a class="header" href="#processing-reference-library">Processing reference library</a></h2>
+<p>There are a few processing steps that we will perform to validate that the
+reference library is in the expected format and without errors.
+Then we will generate an <code>sgrna -&gt; gene</code> mapping file.</p>
+<h3 id="uppercase"><a class="header" href="#uppercase">Uppercase</a></h3>
+<p>We will first convert the fasta to fully uppercase</p>
+<pre><code class="language-bash">fxtools upper -i &lt;your_fasta.fa&gt; -o upper.fa
+</code></pre>
+<h3 id="unique"><a class="header" href="#unique">Unique</a></h3>
+<p>We will then identify any duplicate sequences and remove them from the analysis.</p>
+<pre><code class="language-bash">fxtools unique -i upper.fa -o uniq.fa -n ambiguous.fa
+</code></pre>
+<h3 id="sgrna-to-gene-mapping"><a class="header" href="#sgrna-to-gene-mapping">sgRNA to gene mapping</a></h3>
+<p>If your sgrna library is named predictably of the form: <code>&lt;gene&gt;_&lt;information&gt;...</code>
+we can automatically generate the sgrna to gene mapping with <code>fxtools</code></p>
+<pre><code class="language-bash">fxtools sgrna-table -i uniq.fa -o g2s.txt
+</code></pre>
+<h3 id="variable-regions"><a class="header" href="#variable-regions">Variable regions</a></h3>
+<p>This next step will not apply to everyone - and it depends on whether your reference
+library is purely the variable region of your guides or if it also contains the constant
+adapter sequences.</p>
+<p>Generally if your sequences are longer than about 23bp then your adapater sequence
+is still on.
+You can validate this by seeing if all your sequences share either the same prefix
+or suffix.</p>
+<p>If so - we will need to remove those constant regions and just operate with the
+variable region.</p>
+<p>We can use <code>fxtools</code> for this:</p>
+<pre><code class="language-bash">fxtools extract-variable -i uniq.fa -o uniq.var.fa
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="guide-counting"><a class="header" href="#guide-counting">Guide Counting</a></h1>
+<p>Now that we have <a href="crispr_screen/./reference.html">prepared our reference library</a> we are ready
+to map our records with <code>sgcount</code>.</p>
+<h2 id="running-sgcount"><a class="header" href="#running-sgcount">Running <code>sgcount</code></a></h2>
+<pre><code class="language-bash">sgcount \
+  -l uniq.fa \
+  -i sample_a.fq.gz sample_b.fq.gz sample_c.fq.gz sample_d.fq.gz \
+  -n a b c d \
+  -t 4 \
+  -g g2s.txt \
+  -o mapping.tab
+</code></pre>
+<p>In the above command we are:</p>
+<ul>
+<li>providing our reference library (<code>uniq.fa</code> or <code>uniq.var.fa</code>) generated previously.</li>
+<li>providing our <code>fastq</code> files representing our sgrna library to the <code>-i</code> flag,</li>
+<li>providing an optional custom renaming of those files with the <code>-n</code> flag,</li>
+<li>stating we will be using 4 threads with the <code>-t</code> flag,</li>
+<li>providing our gene to sgrna mapping with the <code>-g</code> flag,</li>
+<li>and writing our results to the output file <code>mapping.tab</code> with the <code>-o</code> flag.</li>
+</ul>
+<p>Thats it! Once it finishes we're done with this step.</p>
+<h2 id="more-information"><a class="header" href="#more-information">More information</a></h2>
+<p>For more detailed information on optional arguments to this check out the
+<a href="https://noamteyssier.github.io/sgcount/usage/">sgcount documentation</a>
+or for information on how it works at
+<a href="https://noamteyssier.github.io/sgcount/implementation/">sgcount implementation</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="differential-expression"><a class="header" href="#differential-expression">Differential Expression</a></h1>
+<p>Now that we have finished <a href="crispr_screen/./counting.html">mapping our reads</a> we are ready to
+perform differential expression.</p>
+<p>The following step applies for <strong>simple screens</strong> or <strong>1-dimensional screens</strong>
+which are generally of the form:</p>
+<pre><code class="language-text">sample_low_1
+sample_low_2
+sample_high_1
+sample_high_2
+</code></pre>
+<blockquote>
+<p>Note: More complicated schemas
+For more complicated schemas I recommend using <a href="https://bioconductor.org/packages/release/bioc/html/DESeq2.html">DESeq2</a>
+for sgRNA expression then aggregating gene-level information with <a href="https://bioconductor.org/packages/release/bioc/html/DESeq2.html">sgagg</a>.</p>
+</blockquote>
+<h2 id="installation-1"><a class="header" href="#installation-1">Installation</a></h2>
+<p>For this analysis we will need to use <code>crispr_screen</code>.
+We can install it easily with the rust package manager <code>cargo</code></p>
+<pre><code class="language-bash">cargo install crispr_screen
+</code></pre>
+<h2 id="usage"><a class="header" href="#usage">Usage</a></h2>
+<p>To run our analysis we just use the following command:</p>
+<pre><code class="language-bash">crispr_screen test \
+  -i mapping.tab \
+  -c sample_low_1 sample_low_2 \
+  -t sample_high_1 sample_high_2
+</code></pre>
+<p>This will create 2 output files <code>results.gene_results.tab</code> and <code>results.sgrna_results.tab</code>
+which reflect the differential expression at the gene and sgrna level respectively.</p>
+<h2 id="more-information-1"><a class="header" href="#more-information-1">More Information</a></h2>
+<p>This will perform the default enrichment analysis - but for more details or alternative
+analysis methods check out the <a href="https://noamteyssier.github.io/crispr_screen">crispr_screen documentation</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="visualization"><a class="header" href="#visualization">Visualization</a></h1>
+<p>Now we come to the best part - looking at your results!</p>
+<p>If you're proficient in python or R this step can be skipped and you can
+roll your own visualization method with the <code>results.gene_results.tab</code> and
+<code>results.sgrna_results.tab</code> dataframes.</p>
+<p>But if you're looking for a quick visualization toolkit you can use my tool
+<a href="https://github.com/noamteyssier/screenviz"><code>screenviz</code></a></p>
+<h2 id="installation-2"><a class="header" href="#installation-2">Installation</a></h2>
+<p>You can install it straight from github with the python package manager <code>pip</code></p>
+<pre><code class="language-bash">pip install git+https://github.com/noamteyssier/screenviz
+</code></pre>
+<h2 id="usage-1"><a class="header" href="#usage-1">Usage</a></h2>
+<h3 id="gene-analysis"><a class="header" href="#gene-analysis">Gene Analysis</a></h3>
+<p>To visualize your gene-level results you can use the <code>screenviz gene</code> subcommand:</p>
+<pre><code class="language-bash">screenviz gene -i results.gene_results.tab
+</code></pre>
+<p>This will write the visualization to a file <code>gene_volcano.html</code> which you can open
+in your favorite browser to interact with:</p>
+<pre><code class="language-bash">firefox gene_volcano.html
+</code></pre>
+<p><img src="crispr_screen/geneviz.png" alt="alt text" title="Gene Visualization" /></p>
+<h3 id="sgrna-analysis"><a class="header" href="#sgrna-analysis">sgRNA Analysis</a></h3>
+<p>To visualize your sgrna-level results you can use the <code>screenviz sgrna</code> subcommand:</p>
+<pre><code class="language-bash">screenviz sgrna -i results.sgrna_results.tab
+</code></pre>
+<p>This will write the visualization to a file <code>sgrna_volcano.html</code> which you can open
+in your favorite browser to intract with:</p>
+<pre><code class="language-bash">firefox sgrna_volcano.html
+</code></pre>
+<p><img src="crispr_screen/sgrnaviz.png" alt="alt text" title="sgRNA Visualization" /></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="crop-seq"><a class="header" href="#crop-seq">CROP-Seq</a></h1>
+<h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
+<p>This section is for those starting their analysis of CROP-seq datasets.
+It will focus on taking your sequencing data to numerical data and show
+you how to install what you need, align your reads, and assign all cells
+carrying an sgRNA to their respective guide.</p>
+<h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
+<p>A brief overview of what you will do:</p>
+<ol>
+<li>
+<p>Prepare your environment for the analysis</p>
+<ul>
+<li>Installation</li>
+<li>Directory Management</li>
+</ul>
+</li>
+<li>
+<p>Sequencing Alignment</p>
+<ul>
+<li>Aligning to the transcriptome</li>
+<li>Aligning to the sgRNA library</li>
+</ul>
+</li>
+<li>
+<p>sgRNA Assignment</p>
+<ul>
+<li>Statistically assigning cells to sgRNAs</li>
+<li>Intersecting 10X and sgRNA library into a single dataset.</li>
+</ul>
+</li>
+</ol>
+<h2 id="what-to-do-next"><a class="header" href="#what-to-do-next">What to do next</a></h2>
+<p>From there you will be able to use other tutorials written elsewhere
+for the single-cell analysis.</p>
+<p>Some helpful links to those below:</p>
+<ul>
+<li><a href="https://scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html">scanpy</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="installation-3"><a class="header" href="#installation-3">Installation</a></h1>
+<p>There are many tools that you will need to use for the purposes of this analysis.
+These tools will require you to have a basic understanding of package management
+and tool usage at the command line, python, and R.</p>
+<p>There are many resources out there for how to install specific packages so I will
+not spend too much time on the details of installation.</p>
+<h2 id="mandatory-note"><a class="header" href="#mandatory-note">Mandatory Note</a></h2>
+<blockquote>
+<p>I <strong>highly</strong> recommend creating a new conda environment for the purposes of
+<strong>only</strong> this analysis.</p>
+<p>As you generate new datasets you can copy this environment over to them, but
+as you make changes you should leave this one unchanged so that you can always
+come back to the same analysis without any unexpected quirks.</p>
+</blockquote>
+<h2 id="commandline-tools"><a class="header" href="#commandline-tools">Commandline Tools</a></h2>
+<ul>
+<li><a href="https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html">conda</a>
+<ul>
+<li>Used for environment management</li>
+</ul>
+</li>
+<li><a href="https://www.kallistobus.tools/">kallisto bustools</a>
+<ul>
+<li>Used for sequence alignment to the transcriptome</li>
+</ul>
+</li>
+<li><a href="https://pachterlab.github.io/kallisto/download">kallisto</a>
+<ul>
+<li>is the core tool for pseudoalignment and pseudoalignment reference building</li>
+<li>a version of this will be packaged into kallisto-bustools but if you don't want
+to search for the binary you can just install this separately</li>
+</ul>
+</li>
+<li><a href="https://bustools.github.io/download">bustools</a>
+<ul>
+<li>a tool for interacting with <code>*.bus</code> files which are used to organize and interact with single-cell data results.</li>
+<li>Some specifications about the <a href="https://github.com/BUStools/BUS-format">BUS File Format</a></li>
+<li>a version of this will be packaged into kallisto-bustools but if you don't want to search for the binary you can just install this separately</li>
+</ul>
+</li>
+<li><a href="https://jupyter.org/install">jupyter</a>
+<ul>
+<li>Used for generating an interactive environment to explore your data (<a href="https://jupyterlab.readthedocs.io/en/stable/getting_started/overview.html">overview</a>)</li>
+</ul>
+</li>
+</ul>
+<h2 id="python-modules"><a class="header" href="#python-modules">Python Modules</a></h2>
+<ul>
+<li><a href="https://scanpy.readthedocs.io/en/stable/">scanpy</a>
+<ul>
+<li>Used for single-cell analysis</li>
+</ul>
+</li>
+<li><a href="https://scvelo.readthedocs.io/">scvelo</a>
+<ul>
+<li>Used for single-cell RNA velocity analysis (Optional)</li>
+</ul>
+</li>
+<li><a href="https://github.com/noamteyssier/geomux.git">geomux</a>
+<ul>
+<li>used for cell-guide assignment</li>
+</ul>
+</li>
+<li><a href="https://github.com/noamteyssier/hgsig.git">hgsig</a>
+<ul>
+<li>used for cluster enrichment/depletion and significance testing</li>
+</ul>
+</li>
+</ul>
+<h2 id="r-libraries"><a class="header" href="#r-libraries">R Libraries</a></h2>
+<ul>
+<li><a href="https://bioconductor.org/packages/release/bioc/html/edgeR.html">edgeR</a>
+<ul>
+<li>used for differential expression analysis</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="environment"><a class="header" href="#environment">Environment</a></h1>
+<p>As mentioned previously, we will create our conda environment now
+and add in our modules as we need them.</p>
+<h2 id="installing-conda"><a class="header" href="#installing-conda">Installing Conda</a></h2>
+<p>I recommend you install <a href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a>
+which is a <em>minimal</em> installer conda.
+It has a very small footprint and works great.</p>
+<p>See the installation instructions <a href="https://docs.conda.io/en/latest/miniconda.html#latest-miniconda-installer-links">here</a>.</p>
+<p>Follow the above instructions and check if everything works:</p>
+<pre><code class="language-bash">conda --version
+</code></pre>
+<p>This should give you a version number of your installation.</p>
+<h2 id="create-conda-environment"><a class="header" href="#create-conda-environment">Create Conda Environment</a></h2>
+<p>Now we are ready to create our conda environment for our analysis.</p>
+<blockquote>
+<p>Make sure you <strong>only</strong> use this environment for a single analysis.
+Do no reuse environments between analyses since this may lead to
+possible versioning issues and your analysis may not be reproducible
+when you come back to it several months later!</p>
+</blockquote>
+<pre><code class="language-bash">conda create -n my_cropseq python=3.8
+</code></pre>
+<p>Here we are creating an environment called <code>my_cropseq</code> and stating that
+the python version is <code>3.8</code>.</p>
+<blockquote>
+<p>You can use alternative python versioning if you want the latest and
+greatest features, but I found this version plays best with older modules.</p>
+</blockquote>
+<h2 id="moving-into-and-out-of-the-environment"><a class="header" href="#moving-into-and-out-of-the-environment">Moving into and out of the environment</a></h2>
+<p>We can now step into our environment as follows:</p>
+<pre><code class="language-bash">conda activate my_cropseq
+</code></pre>
+<p>And we can step out as follows:</p>
+<pre><code class="language-bash">conda deactivate
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="background-processing"><a class="header" href="#background-processing">Background Processing</a></h1>
+<p>This is a small note to mention that many of the analyis steps
+upcoming may take a long time to run and you may not be at your
+computer for their entire length.</p>
+<p>Most often you will run this on a remote computer, so I wanted to
+provide a few links and a quick intro to remote screens.
+This is software that is optional, but very useful, so that you
+are not kicked off remote servers when you close your computer
+or if you have inactivity.</p>
+<p>Some nice options for screens are:</p>
+<ol>
+<li><a href="https://zellij.dev/">zellij</a></li>
+<li><a href="https://github.com/tmux/tmux">tmux</a></li>
+<li><a href="https://www.gnu.org/software/screen/manual/screen.html">screen</a></li>
+</ol>
+<p>There are tutorials elsewhere for how to use these, but again just wanted
+to mention them here so that you don't have to restart any analyses.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sequence-processing"><a class="header" href="#sequence-processing">Sequence Processing</a></h1>
+<p>The first step of the analysis is taking the sequence data to numerical data.
+This section of the tutorial is focused on those initial steps.</p>
+<p>There will first be two sequencing alignment steps:</p>
+<ol>
+<li>Aligning the 10X sequences to the transcriptome</li>
+<li>Aligning the PCR sequences to the sgRNA sequences</li>
+</ol>
+<p>Then there will be an assignment step to link the 10X reads to their
+corresponding sgRNA.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="directory-management"><a class="header" href="#directory-management">Directory Management</a></h1>
+<h2 id="creating-a-project-directory"><a class="header" href="#creating-a-project-directory">Creating a project directory</a></h2>
+<p>The first thing we will do is make a project directory to organize the
+individual blocks of our analysis.</p>
+<p>Let's first create a directory skeleton which we will then populate with
+some data we need to collect from other sources.</p>
+<pre><code class="language-bash"># create your root directory as well as a meta and sequence directory
+mkdir -p project_name/{meta, sequence}
+
+# create a 10X and a PCR directory within your sequence directory
+mkdir -p project_name/sequence/{10X,pcr}
+
+# create a some meta directories we will populate later
+mkdir -p project_name/meta/{index,whitelist,cropseq}
+</code></pre>
+<p>You should now have a directory structure that looks like this:</p>
+<pre><code class="language-txt">project_name/
+└── meta/
+    ├── 10X_index/
+    ├── pcr_index/
+    └── whitelist/
+└── sequence/
+    ├── 10X/
+    └── pcr/
+</code></pre>
+<p>At this point you will want to move your 10X files to the <code>project_name/sequence/10X</code>
+directory and your enrichment PCR files to the <code>project_name/sequence/pcr</code>
+directory so that you have the following directory structure:</p>
+<pre><code class="language-txt">project_name/
+└── meta/
+    ├── 10X_index/
+    ├── pcr_index/
+    └── whitelist/
+└── sequence/
+    └── 10X/
+        ├── sampleX_R1.fastq.gz
+        ├── sampleX_R2.fastq.gz
+        :        ...
+        ├── sampleY_R1.fastq.gz
+        └── sampleY_R2.fastq.gz
+    └── pcr/
+        ├── sampleX_R1.fastq.gz
+        ├── sampleX_R2.fastq.gz
+        :        ...
+        ├── sampleY_R1.fastq.gz
+        └── sampleY_R2.fastq.gz
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="metadata"><a class="header" href="#metadata">Metadata</a></h1>
+<h2 id="whitelist"><a class="header" href="#whitelist">Whitelist</a></h2>
+<p>The <a href="https://kb.10xgenomics.com/hc/en-us/articles/115004506263-What-is-a-barcode-whitelist">whitelist</a>
+is a set of cell barcodes you expect your reads to come from.
+This is usually specified by the technology and can be found online.</p>
+<p>Here you can find the <a href="https://github.com/noamteyssier/10x_whitelist_mirror/blob/0055bd325b5115731b34c7d7e75d422704489ba8/3M-february-2018.txt.gz">10Xv3 cell barcodes</a>
+in my github mirror.
+But you can also find them in your installation of CellRanger or kallisto.</p>
+<blockquote>
+<p><strong>Note</strong>:</p>
+<p>You will use the same whitelist for both the 10X sequences and the PCR
+sequences as they come from the same set of cells.
+This step is not required if you are aligning with kallisto because it can
+provide you with the same whitelist.
+But it will save space to just provide this file as otherwise it will write
+to disk the same whitelist <em>for each sample you process</em></p>
+</blockquote>
+<pre><code class="language-bash"># Download the 10X v3 Whitelist from my github mirror
+wget \
+  https://github.com/noamteyssier/10x_whitelist_mirror/raw/main/3M-february-2018.txt.gz \
+  project_name/meta/whitelist/3M-february-2018.txt.gz
+</code></pre>
+<h2 id="kallisto-index"><a class="header" href="#kallisto-index">Kallisto Index</a></h2>
+<p>The index is a kmer de-bruijn graph representation of the transcriptomic sequences
+you will be aligning your 10X sequences to.</p>
+<blockquote>
+<p><strong>Note</strong>:</p>
+<p>If you are interested in learning more about the kallisto index I
+highly recommend reading the kallisto paper which describes the
+pseudo-alignment algorithm and the index. {{#cite bray_near-optimal_2016}}</p>
+</blockquote>
+<p>If you are interested in building your own reference index please check out
+the <a href="https://www.kallistobus.tools/tutorials/kb_custom_index/python/kb_transcriptome_index/">kb tutorial</a></p>
+<p>For the purposes of this tutorial we will be using a <a href="https://www.kallistobus.tools/tutorials/kb_velocity/python/kb_velocity/#download-a-pre-built-human-rna-velocity-index">prebuilt index</a>
+generated for RNA velocity analyses.</p>
+<p>We will also be building our own index in an upcoming section so you can look
+at how to do that there as well.</p>
+<h2 id="rna-velocity-transcriptome"><a class="header" href="#rna-velocity-transcriptome">RNA Velocity Transcriptome</a></h2>
+<blockquote>
+<p>Even if you are not interested in doing an RNA velocity analysis - it doesn't
+hurt you to align to a spliced/unspliced reference.</p>
+<p>The counts are aggregated between the spliced/unspliced records in the
+downstream data, but you have an added option of observing the splice/unsplice
+ratio</p>
+</blockquote>
+<pre><code class="language-bash"># moving to the planned directory
+cd project_name/meta/index/
+
+# Downloading the Reference Index
+kb ref \
+  -d linnarsson \
+  -i index.idx \
+  -g t2g.txt \
+  -c1 spliced_t2c.txt \
+  -c2 unspliced_t2c.txt
+</code></pre>
+<p>The above command will download the reference index and create the following files:</p>
+<ol>
+<li><code>project_name/meta/10X_index/index.idx</code></li>
+<li><code>project_name/meta/10X_index/t2g.txt</code></li>
+<li><code>project_name/meta/10X_index/spliced_t2c.txt</code></li>
+<li><code>project_name/meta/10X_index/unspliced_t2c.txt</code></li>
+</ol>
+<p>These will be used in the next section when we run our 10X alignment.</p>
+<h2 id="target-sequences"><a class="header" href="#target-sequences">Target Sequences</a></h2>
+<p>The <code>cropseq.fa</code> file here is a stand-in for the fasta formatted sequences of
+your expected guide sequences.</p>
+<p>You will want to place this under <code>project_name/meta/pcr_index/</code></p>
+<h3 id="filename-cropseqfa"><a class="header" href="#filename-cropseqfa">Filename: <code>cropseq.fa</code></a></h3>
+<pre><code class="language-txt">&gt;rs17057051_i1
+TTGTCCAGCATTCTGCTTCAATGGTTTAAGAGC
+&gt;rs17057051_i2
+TTGGTCTCCATTGAAGATGTGTTGTTTAAGAGC
+              ...
+&gt;rs1532277_i1
+TTGCAGAACTCTAGCAAGACGTGGTTTAAGAGC
+&gt;rs1532277_i2
+TTGGAATCTGGGCATTAGGCCCTGTTTAAGAGC
+</code></pre>
+<h2 id="final-directory-structure"><a class="header" href="#final-directory-structure">Final Directory Structure</a></h2>
+<p>I <strong>highly</strong> recommend you have a directory structure like the following
+for your project.</p>
+<blockquote>
+<p>Downstream code will be expecting this directory structure but if you feel
+strongly about your own structure then it can be easily modified for your own interests.</p>
+</blockquote>
+<pre><code class="language-txt">project_name/
+└── meta/
+    └── whitelist/
+        └── 3M-february-2018.txt.gz
+    └── 10X_index/
+        ├── index.idx 
+        ├── t2g.txt
+        ├── spliced_t2c.txt
+        └── unspliced_t2c.txt
+    └── pcr_index/
+        └── cropseq.fa
+└── sequence/
+    └── 10X/
+        ├── sampleX_R1.fastq.gz
+        ├── sampleX_R2.fastq.gz
+        :        ...
+        ├── sampleY_R1.fastq.gz
+        └── sampleY_R2.fastq.gz
+    └── pcr/
+        ├── sampleX_R1.fastq.gz
+        ├── sampleX_R2.fastq.gz
+        :        ...
+        ├── sampleY_R1.fastq.gz
+        └── sampleY_R2.fastq.gz
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="10x-alignment"><a class="header" href="#10x-alignment">10X Alignment</a></h1>
+<p>This section will cover the sequence alignment steps for the 10X sequences.
+It assumes you have a similar directory structure to the one described in
+the previous sections.</p>
+<h2 id="installation-4"><a class="header" href="#installation-4">Installation</a></h2>
+<p>We are going to use <code>kb-python</code> for sequencing alignment, which is a wrapper
+of the <code>kallisto</code> and <code>bustools</code> commandline tools.</p>
+<pre><code class="language-bash"># enter our conda environment (can skip if already in environment)
+conda activate my_cropseq
+
+# install kb-python via pip
+pip install kb-python
+
+# check if installation worked
+kb --version
+</code></pre>
+<h2 id="creating-your-results-directory"><a class="header" href="#creating-your-results-directory">Creating your results directory</a></h2>
+<p><code>kb</code> will create an output directory <strong>for each of the samples</strong>.
+This quickly gets unwieldy, so I recommend creating a new directory
+in your project to hold these data for easy access later.</p>
+<p>From the <strong>root of your project directory</strong> run:</p>
+<pre><code class="language-bash">mkdir -p alignment/10X
+</code></pre>
+<p>Your project directory should now look like the following:</p>
+<pre><code class="language-txt">project_name/
+└── meta/
+    └── whitelist/
+        └── 3M-february-2018.txt.gz
+    └── 10X_index/
+        ├── index.idx 
+        ├── t2g.txt
+        ├── spliced_t2c.txt
+        └── unspliced_t2c.txt
+    └── pcr_index/
+└── sequence/
+    └── 10X/
+        ├── sampleX_R1.fastq.gz
+        ├── sampleX_R2.fastq.gz
+        :        ...
+        ├── sampleY_R1.fastq.gz
+        └── sampleY_R2.fastq.gz
+    └── pcr/
+└── alignment/
+    └── 10X/
+</code></pre>
+<h2 id="running-kb-count"><a class="header" href="#running-kb-count">Running <code>kb count</code></a></h2>
+<p>We can now run the alignment step which will create the <code>cell x gene</code>
+count matrix.</p>
+<p>We will do this using the <code>kb count</code> submodule of <code>kb</code>.</p>
+<pre><code class="language-bash">kb count \
+  --verbose \
+  --h5ad \
+  -t 4 \
+  -x 10xv3 \
+  -w meta/whitelist/3M-february-2018.txt.gz \
+  -g meta/10X_index/t2g.txt \
+  -i meta/10X_index/index.idx \
+  --workflow lamanno \
+  --filter bustools \
+  -c1 meta/10X_index/spliced_t2c.txt \
+  -c2 meta/10X_index/unspliced_t2c.txt \
+  -o alignment/10X/SampleX \
+  SampleX_R1.fastq.gz SampleX_R2.fastq.gz
+</code></pre>
+<h2 id="running-multiple-sequencing-datasets-as-one-sample"><a class="header" href="#running-multiple-sequencing-datasets-as-one-sample">Running multiple sequencing datasets as one sample</a></h2>
+<p>Sometimes you have the same sample split across multiple sequencing files.
+<code>kb</code> can handle this easily, and the only change to the above command is to
+include the path of all files under the same sample name at the end.</p>
+<pre><code class="language-bash">kb count \
+  --verbose \
+  --h5ad \
+  -t 4 \
+  -x 10xv3 \
+  -w meta/whitelist/3M-february-2018.txt.gz \
+  -g meta/10X_index/t2g.txt \
+  -i meta/10X_index/index.idx \
+  --workflow lamanno \
+  --filter bustools \
+  -c1 meta/10X_index/spliced_t2c.txt \
+  -c2 meta/10X_index/unspliced_t2c.txt \
+  -o alignment/10X/SampleX \
+  SampleX_1_R1.fastq.gz SampleX_1_R2.fastq.gz \
+  SampleX_2_R1.fastq.gz SampleX_2_R2.fastq.gz \
+  SampleX_3_R1.fastq.gz SampleX_3_R2.fastq.gz
+</code></pre>
+<h2 id="running-multiple-samples-at-once"><a class="header" href="#running-multiple-samples-at-once">Running multiple samples at once</a></h2>
+<p>Parallel processing of multiple samples at once is outside the scope of this
+tutorial, but if you are interested in efficient ways of doing this I
+recommend checking out:</p>
+<ul>
+<li><a href="https://www.nextflow.io/">nextflow</a></li>
+<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a></li>
+</ul>
+<p>Otherwise, you can take the above command and put it into a for-loop fairly easily:</p>
+<pre><code class="language-bash">#!/bin/bash
+
+for sample_id in sequence/10X/*R1.fastq.gz;
+do
+    basename=$(basename -s &quot;.fastq.gz&quot; $sample_id);
+    r1=$sample_id;
+    r2=${r1/R1/R2};
+
+    kb count \
+      --verbose \
+      --h5ad \
+      -t 4 \
+      -x 10xv3 \
+      -w meta/whitelist/3M-february-2018.txt.gz \
+      -g meta/10X_index/t2g.txt \
+      -i meta/10X_index/index.idx \
+      --workflow lamanno \
+      --filter bustools \
+      -c1 meta/10X_index/spliced_t2c.txt \
+      -c2 meta/10X_index/unspliced_t2c.txt \
+      -o alignment/10X/${basename} \
+      $r1 $r2
+    
+done
+</code></pre>
+<h2 id="results"><a class="header" href="#results">Results</a></h2>
+<p>Once <code>kb</code> has finished we can take a look at the data and see
+if it is as expected.</p>
+<p>If you explore the directory <code>alignment/10X/&lt;your_sample_name&gt;</code> you should see
+the following:</p>
+<pre><code class="language-txt">.
+├── 10xv3_whitelist.txt
+├── counts_filtered
+│   ├── adata.h5ad
+│   ├── spliced.barcodes.txt
+│   ├── spliced.genes.txt
+│   ├── spliced.mtx
+│   ├── unspliced.barcodes.txt
+│   ├── unspliced.genes.txt
+│   └── unspliced.mtx
+├── counts_unfiltered
+│   ├── adata.h5ad
+│   ├── spliced.barcodes.txt
+│   ├── spliced.genes.txt
+│   ├── spliced.mtx
+│   ├── unspliced.barcodes.txt
+│   ├── unspliced.genes.txt
+│   └── unspliced.mtx
+├── filter_barcodes.txt
+├── inspect.json
+├── inspect.spliced.json
+├── inspect.unspliced.json
+├── kb_info.json
+├── matrix.ec
+├── output.bus
+├── output.filtered.bus
+├── output.unfiltered.bus
+├── run_info.json
+├── spliced.filtered.bus
+├── spliced.unfiltered.bus
+├── transcripts.txt
+├── unspliced.filtered.bus
+└── unspliced.unfiltered.bus
+</code></pre>
+<p>The <code>cell x gene</code> matrix will be under <code>counts_filtered/adata.h5ad</code> or <code>counts_unfiltered/adata.h5ad</code>.</p>
+<p>You can decide which of these you will use downstream, though I
+recommend using the <code>counts_filtered</code> version.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="pcr-alignment"><a class="header" href="#pcr-alignment">PCR Alignment</a></h1>
+<p>Now we will move onto the alignment of the enrichment PCR sequences to
+the sgRNA library.</p>
+<p>We will also be using <code>kb</code> for this alignment, but we first need to create
+a new custom index for the sgRNA library.</p>
+<h2 id="sgrna-index"><a class="header" href="#sgrna-index">sgRNA Index</a></h2>
+<p>We will be creating the index from the sgRNA library fasta file that we
+included in the <a href="cropseq/./metadata.html">Metadata</a> section of the tutorial: <code>cropseq.fa</code>.</p>
+<p>As a reminder this file is under: <code>project_name/meta/pcr_index</code> and
+has the following structure:</p>
+<h3 id="filename-cropseqfa-1"><a class="header" href="#filename-cropseqfa-1">Filename: <code>cropseq.fa</code></a></h3>
+<pre><code class="language-fasta">&gt;rs17057051_i1
+TTGTCCAGCATTCTGCTTCAATGGTTTAAGAGC
+&gt;rs17057051_i2
+TTGGTCTCCATTGAAGATGTGTTGTTTAAGAGC
+              ...
+&gt;rs1532277_i1
+TTGCAGAACTCTAGCAAGACGTGGTTTAAGAGC
+&gt;rs1532277_i2
+TTGGAATCTGGGCATTAGGCCCTGTTTAAGAGC
+</code></pre>
+<p>We will create our <code>kallisto</code> index from these sequences with the following command:</p>
+<pre><code class="language-bash">kallisto index -k 15 -i cropseq.idx cropseq.fa
+</code></pre>
+<blockquote>
+<p><strong>Note</strong>:</p>
+<p>I have set the kmer size to 15 here because I have found this to be
+the optimal size in my own data. Feel free to adjust this value if
+you have strong opinions on why a different value would be best.</p>
+</blockquote>
+<h2 id="project-directory"><a class="header" href="#project-directory">Project Directory</a></h2>
+<p>After creating this file we will also create a new directory to hold our
+alignment results:</p>
+<pre><code class="language-bash">mkdir -p alignment/pcr
+</code></pre>
+<p>Your project directory should now look like the following:</p>
+<pre><code class="language-txt">project_name/
+└── meta/
+    └── whitelist/
+        └── 3M-february-2018.txt.gz
+    └── 10X_index/
+        ├── index.idx 
+        ├── t2g.txt
+        ├── spliced_t2c.txt
+        └── unspliced_t2c.txt
+    └── pcr_index/
+        ├── cropseq.fa
+        └── cropseq.idx
+└── sequence/
+    └── 10X/
+        ├── sampleX_R1.fastq.gz
+        ├── sampleX_R2.fastq.gz
+        :        ...
+        ├── sampleY_R1.fastq.gz
+        └── sampleY_R2.fastq.gz
+    └── pcr/
+        ├── sampleX_R1.fastq.gz
+        ├── sampleX_R2.fastq.gz
+        :        ...
+        ├── sampleY_R1.fastq.gz
+        └── sampleY_R2.fastq.gz
+└── alignment/
+    ├── 10X/
+    └── pcr/
+
+</code></pre>
+<h2 id="alignment"><a class="header" href="#alignment">Alignment</a></h2>
+<p>Now we align our PCR sequences to the newly created index using <code>kb</code> similar to
+the previous alignment we did for the 10X sequences.</p>
+<pre><code class="language-bash">kb count \
+  --verbose \
+  --h5ad \
+  -t 4 \
+  -x 10xv3 \
+  -w meta/whitelist/3M-february-2018.txt.gz \
+  -g meta/pcr_index/t2g.txt \
+  -i meta/pcr_index/index.idx \
+  --filter bustools \
+  -o alignment/pcr/SampleX \
+  SampleX_R1.fastq.gz SampleX_R2.fastq.gz
+</code></pre>
+<h3 id="running-multiple-sequencing-datasets-as-one-sample-1"><a class="header" href="#running-multiple-sequencing-datasets-as-one-sample-1">Running multiple sequencing datasets as one sample</a></h3>
+<p>Sometimes you have the same sample split across multiple sequencing files.
+<code>kb</code> can handle this easily, and the only change to the above command is
+to include the path of all files under the same sample name at the end.</p>
+<pre><code class="language-bash">kb count \
+  --verbose \
+  --h5ad \
+  -t 4 \
+  -x 10xv3 \
+  -w meta/whitelist/3M-february-2018.txt.gz \
+  -g meta/pcr_index/t2g.txt \
+  -i meta/pcr_index/index.idx \
+  --filter bustools \
+  -o alignment/pcr/SampleX \
+  SampleX_1_R1.fastq.gz SampleX_1_R2.fastq.gz \
+  SampleX_2_R1.fastq.gz SampleX_2_R2.fastq.gz \
+  SampleX_3_R1.fastq.gz SampleX_3_R2.fastq.gz
+</code></pre>
+<h3 id="running-multiple-samples-at-once-1"><a class="header" href="#running-multiple-samples-at-once-1">Running multiple samples at once</a></h3>
+<p>Parallel processing of multiple samples at once is outside the scope of this
+tutorial, but if you are interested in efficient ways of doing this I
+recommend checking out:</p>
+<ul>
+<li><a href="https://www.nextflow.io/">nextflow</a></li>
+<li><a href="https://snakemake.readthedocs.io/en/stable/">snakemake</a></li>
+</ul>
+<p>Otherwise, you can take the above command and put it into a for-loop fairly easily:</p>
+<pre><code class="language-bash">#!/bin/bash
+
+for sample_id in sequence/pcr/*R1.fastq.gz;
+do
+    basename=$(basename -s &quot;.fastq.gz&quot; $sample_id);
+    r1=$sample_id;
+    r2=${r1/R1/R2};
+
+    kb count \
+      --verbose \
+      --h5ad \
+      -t 4 \
+      -x 10xv3 \
+      -w meta/whitelist/3M-february-2018.txt.gz \
+      -g meta/pcr_index/t2g.txt \
+      -i meta/pcr_index/index.idx \
+      --filter bustools \
+      -o alignment/pcr/SampleX \
+      $r1 $r2;
+    
+done
+</code></pre>
+<h2 id="results-1"><a class="header" href="#results-1">Results</a></h2>
+<p>Once <code>kb</code> has finished we can take a look at the data and see
+if it is as expected.</p>
+<p>If you explore the directory <code>alignment/pcr/&lt;your_sample_name&gt;</code> you should see
+the following:</p>
+<pre><code class="language-txt">.
+├── 10xv3_whitelist.txt
+├── counts_filtered
+│   ├── adata.h5ad
+│   ├── spliced.barcodes.txt
+│   ├── spliced.genes.txt
+│   ├── spliced.mtx
+│   ├── unspliced.barcodes.txt
+│   ├── unspliced.genes.txt
+│   └── unspliced.mtx
+├── counts_unfiltered
+│   ├── adata.h5ad
+│   ├── spliced.barcodes.txt
+│   ├── spliced.genes.txt
+│   ├── spliced.mtx
+│   ├── unspliced.barcodes.txt
+│   ├── unspliced.genes.txt
+│   └── unspliced.mtx
+├── filter_barcodes.txt
+├── inspect.json
+├── inspect.spliced.json
+├── inspect.unspliced.json
+├── kb_info.json
+├── matrix.ec
+├── output.bus
+├── output.filtered.bus
+├── output.unfiltered.bus
+├── run_info.json
+├── spliced.filtered.bus
+├── spliced.unfiltered.bus
+├── transcripts.txt
+├── unspliced.filtered.bus
+└── unspliced.unfiltered.bus
+</code></pre>
+<p>The <code>cell x gene</code> matrix will be under <code>counts_filtered/adata.h5ad</code> or <code>counts_unfiltered/adata.h5ad</code>.</p>
+<p>You can decide which of these you will use downstream, though I
+recommend using the <code>counts_filtered</code> version.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="assignment"><a class="header" href="#assignment">Assignment</a></h1>
+<p>Now that we have the PCR sequences aligned to their respective guides
+we can perform the assignment step.</p>
+<h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
+<p>The assignment step will be done with <a href="https://github.com/noamteyssier/geomux"><code>geomux</code></a>.</p>
+<p>This is a tool I created based on a hypergeometric test which can assign cells
+to guides with high confidence.</p>
+<p>The intuition behind the mathematics is that every cell with an sgRNA will
+have a background distribution (or sequencing noise) and a signal distribution
+(i.e. its true sgRNAs).
+The hypergeometric test is used to identify what sgRNA abundance occurs above
+random chance, and then a ratio test is used to select for cells with only a
+single signal sgRNA (i.e. filter against high multiplicity of infection).</p>
+<h2 id="installation-5"><a class="header" href="#installation-5">Installation</a></h2>
+<p>We can install <code>geomux</code> directly from its github repo.</p>
+<pre><code class="language-bash">pip install git+https://github.com/noamteyssier/geomux
+</code></pre>
+<h2 id="usage-2"><a class="header" href="#usage-2">Usage</a></h2>
+<p>We can use <code>geomux</code> directly from the command line, or we can use it from
+a jupyter notebook.</p>
+<p>I prefer to run it from the commandline and will include those instructions
+here.</p>
+<p>If you prefer to use it from a jupyter notebook, check out the
+<a href="https://github.com/noamteyssier/geomux#python-module">tutorial</a>
+on the repo.</p>
+<h3 id="creating-an-assignment-directory"><a class="header" href="#creating-an-assignment-directory">Creating an assignment directory</a></h3>
+<p>First we create a directory to hold our assignment results.</p>
+<pre><code class="language-bash">mkdir -p meta/assignment/
+</code></pre>
+<h3 id="running-geomux"><a class="header" href="#running-geomux">Running <code>geomux</code></a></h3>
+<p>We can now run <code>geomux</code> with the following command:</p>
+<pre><code class="language-bash">geomux \
+    -i alignment/pcr/sampleX/counts_filtered/adata.h5ad \
+    -o meta/assignment/sampleX.tab
+</code></pre>
+<p>This will create a tab-separated file (<code>*.tab</code>) which will have the cell-barcode,
+associated guide, and statistics about the assignment provided.</p>
+<h2 id="intersecting-the-10x-sequencing-data-and-the-assignments"><a class="header" href="#intersecting-the-10x-sequencing-data-and-the-assignments">Intersecting the 10X sequencing data and the Assignments</a></h2>
+<p>We have now done all the steps necessary to intersect the 10X single-cell sequencing
+data with the enrichment PCR.</p>
+<p>We can now just load in the 10X sequencing data and merge the dataframes together
+to have our cells assigned to their respective sgRNAs.</p>
+<p>The next step will assume you have <a href="https://scanpy.readthedocs.io/"><code>scanpy</code></a>
+installed already.</p>
+<pre><code class="language-python">import pandas as pd
+import scanpy as sc
+
+# load assignments
+assignments = pd.read_csv(
+    &quot;meta/assignment/sampleX.tab&quot;, 
+    sep=&quot;\t&quot;, 
+    index_col=&quot;barcode&quot;
+)
+
+# load anndata (10X)
+adata = sc.read(
+    &quot;alignment/10x/sampleX/counts_filtered/adata.h5ad&quot;
+)
+
+# merge the two
+adata.obs = adata.obs.merge(
+    assignment, 
+    left_index=True, 
+    right_index=True, 
+    how=&quot;left&quot;
+)
+
+# drop cells that do not have an assignment
+adata = adata.obs[~adata.obs.guide.isna()].copy()
+
+# view the merged anndata
+adata
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+    </body>
+</html>
